@@ -51,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
                             text: "Don't have an account ? ",
                             style: TextStyle(color: Colors.black)),
                         TextSpan(
-                            text: "Registor",
+                            text: "Register",
                             recognizer: TapGestureRecognizer()
                               ..onTap = () => Navigator.of(context).push(
                                     MaterialPageRoute(
