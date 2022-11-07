@@ -37,10 +37,14 @@ class DetailsAppBar extends StatelessWidget {
                       width: 40,
                       padding: const EdgeInsets.all(5),
                       decoration: const BoxDecoration(
-                        color: Color(0xffF2861E),
+                        color: Color(0xffF5591F),
                         shape: BoxShape.circle,
                       ),
-                      child: SvgPicture.asset('assets/icons/arrow.svg'),
+                      child: const Icon(
+                        Icons.keyboard_arrow_left_outlined,
+                        color: Colors.white,
+                        size: 20,
+                      ),
                     ),
                   ),
                 ],

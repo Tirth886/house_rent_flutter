@@ -16,10 +16,10 @@ class House {
 
   static List<House> generateBestOffer() {
     return [
-      House('The Moon House', 'P455, Chhatak, Sylhet',
+      House('The Moon House', 'Lucknow,Uttar Pradesh',
           'assets/images/offer01.jpeg'),
-      House('The Moon House', 'P455, Chhatak, Sylhet',
-          'assets/images/offer02.jpeg'),
+      House(
+          'The Moon House', 'Agra,Uttar Pradesh', 'assets/images/offer02.jpeg'),
     ];
   }
 }

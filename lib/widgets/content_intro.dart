@@ -43,7 +43,7 @@ class ContentIntro extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: '\$4455',
+                  text: '₹.4455',
                   style: Theme.of(context).textTheme.headline1!.copyWith(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,

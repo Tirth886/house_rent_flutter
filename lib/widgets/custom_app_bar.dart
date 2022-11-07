@@ -21,10 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset('assets/icons/menu.svg'),
-            ),
+            Container(),
             IconButton(
                 onPressed: () {
                   _handleNavigateToLogin(context);
