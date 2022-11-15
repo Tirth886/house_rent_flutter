@@ -15,16 +15,9 @@ class Home extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const WelcomeText(),
-            const SearchInput(),
-            // const Categories(),
-            // RecommendedHouse(),
-            BestOffer()
-          ],
+          children: [const WelcomeText(), const SearchInput(), BestOffer()],
         ),
       ),
-      // bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

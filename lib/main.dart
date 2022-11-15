@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:house_rent/screens/home/home.dart';
+import 'package:house_rent/utils/color.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +16,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: const Color(0xFFF5F6F6),
-        primaryColor: const Color(0xFF811B83),
+        primaryColor: orangeColors,
         colorScheme: ColorScheme.fromSwatch().copyWith(
-          secondary: const Color(0xFFFA5019),
+          secondary: orangeLightColors,
         ),
         textTheme: TextTheme(
           headline1: const TextStyle(
