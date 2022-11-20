@@ -5,7 +5,8 @@ import 'package:house_rent/widgets/welcome_text.dart';
 import 'package:house_rent/widgets/best_offer.dart';
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  final String username;
+  const Home({Key? key, required this.username}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,13 @@ class Home extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [const WelcomeText(), const SearchInput(), BestOffer()],
+          children: [
+            WelcomeText(
+              username: username,
+            ),
+            const SearchInput(),
+            const BestOfferScreen()
+          ],
         ),
       ),
     );

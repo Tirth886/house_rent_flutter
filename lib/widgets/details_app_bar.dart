@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:house_rent/models/best_offer.dart';
 import 'package:house_rent/models/house.dart';
 
 class DetailsAppBar extends StatelessWidget {
-  final House house;
+  final BestOffer house;
 
   const DetailsAppBar({Key? key, required this.house}) : super(key: key);
 
@@ -16,11 +18,16 @@ class DetailsAppBar extends StatelessWidget {
       height: 400,
       child: Stack(
         children: [
-          Image.asset(
-            house.imageUrl,
+          CachedNetworkImage(
+            imageUrl: house.imageUrl,
             fit: BoxFit.cover,
             height: double.infinity,
           ),
+          // Image.asset(
+          //   house.imageUrl,
+          //   fit: BoxFit.cover,
+          //   height: double.infinity,
+          // ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

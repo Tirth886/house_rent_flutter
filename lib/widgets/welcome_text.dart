@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 class WelcomeText extends StatelessWidget {
-  const WelcomeText({Key? key}) : super(key: key);
-
+  final String username;
+  const WelcomeText({Key? key, required this.username}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,7 +13,7 @@ class WelcomeText extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Hello Sarthak',
+            username,
             style: Theme.of(context).textTheme.bodyText1!.copyWith(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

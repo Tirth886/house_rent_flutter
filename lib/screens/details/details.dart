@@ -1,18 +1,29 @@
-import 'package:flutter/material.dart';
+import 'dart:ffi';
 
-import 'package:house_rent/models/house.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter/material.dart';
+import 'package:house_rent/models/best_offer.dart';
+import 'package:house_rent/screens/auth/pages/login_page.dart';
+
 import 'package:house_rent/utils/color.dart';
 import 'package:house_rent/widgets/about.dart';
 import 'package:house_rent/widgets/content_intro.dart';
 import 'package:house_rent/widgets/details_app_bar.dart';
 import 'package:house_rent/widgets/house_info.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Details extends StatelessWidget {
-  final House house;
+  final BestOffer house;
+
   const Details({
     Key? key,
     required this.house,
   }) : super(key: key);
+
+  Future<bool> _getSp() async {
+    final pref = await SharedPreferences.getInstance();
+    return (pref.getBool('isUserLogin') ?? false);
+  }
 
   _showAlertDialog(BuildContext context) {
     // set up the buttons
@@ -50,38 +61,64 @@ class Details extends StatelessWidget {
             const SizedBox(height: 20),
             ContentIntro(house: house),
             const SizedBox(height: 20),
-            const HouseInfo(),
+            HouseInfo(house: house),
             const SizedBox(height: 20),
-            const About(),
+            About(house: house),
             const SizedBox(height: 20),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  backgroundColor: orangeColors,
-                ),
-                child: InkWell(
-                  onTap: () {
-                    _showAlertDialog(context);
-                  },
-                  child: Container(
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                      child: const Text(
-                        'Book Now',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
+            FutureBuilder<bool>(
+              future: _getSp(),
+              builder: (context, snapshot) => snapshot.data == true
+                  ? Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          backgroundColor: orangeColors,
                         ),
-                      )),
-                ),
-              ),
+                        child: InkWell(
+                          onTap: () {
+                            _showAlertDialog(context);
+                          },
+                          child: Container(
+                              alignment: Alignment.center,
+                              padding: const EdgeInsets.symmetric(vertical: 15),
+                              child: const Text(
+                                'Book Now',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
+                        ),
+                      ),
+                    )
+                  : Center(
+                      child: RichText(
+                      text: TextSpan(children: [
+                        const TextSpan(
+                            text: "Already a member ? ",
+                            style: TextStyle(color: Colors.black)),
+                        TextSpan(
+                            text: "Login",
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () => {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(
+                                      builder: (context) => LoginPage(),
+                                    ))
+                                  },
+                            style: TextStyle(
+                                color: orangeColors, fontSize: 14.00)),
+                      ]),
+                    )),
             ),
+            const SizedBox(
+              height: 10,
+            )
           ],
         ),
       ),

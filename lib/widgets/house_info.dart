@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:house_rent/models/best_offer.dart';
 import 'package:house_rent/utils/color.dart';
 
 class HouseInfo extends StatelessWidget {
-  const HouseInfo({Key? key}) : super(key: key);
+  final BestOffer house;
+  const HouseInfo({Key? key, required this.house}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,27 +14,27 @@ class HouseInfo extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            children: const [
+            children: [
               _MenuInfo(
                 imageUrl: 'assets/icons/bedroom.svg',
-                content: '5 Bedroom\n3 Master Bedroom',
+                content: house.bedroom,
               ),
               _MenuInfo(
                 imageUrl: 'assets/icons/bathroom.svg',
-                content: '5 Bathroom\n3 Toilet',
+                content: house.bathroom,
               ),
             ],
           ),
           const SizedBox(height: 10),
           Row(
-            children: const [
+            children: [
               _MenuInfo(
                 imageUrl: 'assets/icons/kitchen.svg',
-                content: '2 Kitchen\n120 sqft',
+                content: house.kitchen,
               ),
               _MenuInfo(
                 imageUrl: 'assets/icons/parking.svg',
-                content: '5 Parking\n120 sqft',
+                content: house.parking,
               ),
             ],
           )
@@ -59,11 +61,13 @@ class _MenuInfo extends StatelessWidget {
         children: [
           SvgPicture.asset(imageUrl, color: orangeColors),
           const SizedBox(width: 20),
-          Text(
-            content,
-            style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                  fontSize: 12,
-                ),
+          Expanded(
+            child: Text(
+              content,
+              style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                    fontSize: 12,
+                  ),
+            ),
           ),
         ],
       ),

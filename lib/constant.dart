@@ -1,1 +1,1 @@
-const String URISTRING = "http://192.168.194.61/pgrentapi/v1/";
+const String URISTRING = "http://10.0.2.2/pgrentapi/v1/";
