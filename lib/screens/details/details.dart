@@ -84,7 +84,7 @@ class Details extends StatelessWidget {
     );
     AlertDialog alert = AlertDialog(
       title: const Text("Status"),
-      content: const Text("Booking Created successfully."),
+      content: const Text("Are you sure to confirm this booking ?"),
       actions: [
         cancelButton,
         confirmButton,
