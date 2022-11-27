@@ -16,7 +16,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 Future<dynamic> loginUser(email, password, BuildContext context) async {
   String uriString = constants.URISTRING;
-  print(uriString);
   final bool emailValid = RegExp(
           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
       .hasMatch(email);
